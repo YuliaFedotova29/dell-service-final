@@ -1,0 +1,54 @@
+@use '../variables' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 16px;
+  color: $color-gray;
+
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  @media (min-width: 1366px) {
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 12px 32px;
+  }
+}
+
+.footer__copyright {
+  white-space: nowrap;
+  justify-self: start;
+}
+
+.footer__link {
+  color: $color-gray;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  justify-self: center;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.footer__disclaimer {
+  @media (min-width: 768px) {
+    text-align: right;
+    max-width: 213px;
+    width: auto;
+    justify-self: end;
+  }
+
+  @media (min-width: 1366px) {
+    max-width: 330px;
+  }
+}

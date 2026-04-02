@@ -1,0 +1,98 @@
+@use '../variables' as *;
+
+.services {
+  margin-bottom: 24px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  border-radius: 6px;
+  border: 1px solid $color-border;
+  padding: 8px 14px 14px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.service-card__label {
+  color: $color-gray;
+  font-weight: 500;
+  letter-spacing: 0px;
+  padding-top: 10px;
+  padding-bottom: 3px;
+}
+
+.service-card__footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.services__table {
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.services__body {
+  border-radius: 6px;
+  background-color: $color-white;
+}
+
+.services__row--header {
+  .services__cell {
+    color: $color-gray;
+    padding: 16px 12px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+
+.services__row {
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 120px 140px 140px;
+    position: relative;
+  }
+}
+
+.services__body .services__row:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 1px;
+  background-color: $color-border;
+}
+
+.services__cell {
+  @media (min-width: 768px) {
+    padding: 20px 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    border: none;
+  }
+}
+
+.services__info {
+  max-width: 421px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+
+  @media (min-width: 768px) {
+    padding-top: 24px;
+  }
+}

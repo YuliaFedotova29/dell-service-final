@@ -1,0 +1,167 @@
+@use '../variables' as *;
+
+.sidebar__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 98;
+
+  &.is-visible {
+    display: block;
+  }
+
+  @media (min-width: 1366px) {
+    display: none;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 320px;
+  height: 100vh;
+  background-color: $color-white;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 1366px) {
+    box-shadow: none;
+    border-right: 1px solid $color-border;
+    transform: translateX(0);
+  }
+}
+
+// Основной контент сдвигается вправо на ширину сайдбара на десктопе
+body {
+  @media (min-width: 1366px) {
+    padding-left: 320px;
+  }
+}
+
+// Навигация
+.menu {
+  padding: 12px 0;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.menu__item a {
+  position: relative;
+  display: block;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: $color-text;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-gray;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 32px;
+    border-radius: 0 4px 4px 0;
+    background-color: $color-accent;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::before,
+  &.active::before {
+    opacity: 1;
+  }
+}
+
+.menu__item--active a {
+  font-weight: 500;
+
+  &::before {
+    opacity: 1;
+  }
+}
+
+.contacts {
+  padding: 16px 24px;
+  margin-top: auto;
+}
+
+.contacts__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.75;
+    transform: scale(1.1);
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.contacts__email {
+  display: block;
+  padding-top: 8px;
+  color: $color-text;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:hover {
+    color: $color-gray;
+  }
+}
+
+.contacts__phone {
+  padding-top: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-text;
+}
+
+.lang {
+  padding: 16px 24px;
+}
+
+.lang__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: $color-gray;
+  margin-right: 8px;
+  transition: color 0.2s ease;
+
+  &--active,
+  &:hover {
+    color: $color-text;
+    font-weight: 500;
+  }
+}

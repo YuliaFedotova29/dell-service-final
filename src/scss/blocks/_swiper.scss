@@ -1,0 +1,77 @@
+@use '../variables' as *;
+
+.swiper-wrap {
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    position: relative;
+    padding: 16px 6px 0 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: calc(100% - 35px);
+      background: linear-gradient(to right, transparent, $color-bg);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .swiper {
+      padding-bottom: 35px;
+    }
+  }
+}
+
+#brandsSwiper {
+  @media (max-width: 767px) {
+    .swiper-slide {
+      width: 240px;
+    }
+
+    .brand-card {
+      width: 240px;
+      height: 72px;
+    }
+  }
+}
+
+#devicesSwiper {
+  @media (max-width: 767px) {
+    .swiper-slide {
+      width: 240px;
+    }
+
+    .devices-card {
+      width: 240px;
+      height: 160px;
+    }
+  }
+}
+
+#servicesSwiper {
+  @media (max-width: 767px) {
+    .swiper-slide {
+      width: 260px;
+    }
+
+    .service-card {
+      width: 260px;
+      height: 200px;
+    }
+  }
+}
+
+.swiper {
+  --swiper-pagination-color: #b5b6bc;
+  --swiper-pagination-bullet-inactive-color: #dddddd;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+  }
+}

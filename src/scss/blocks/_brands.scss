@@ -1,0 +1,130 @@
+@use '../variables' as *;
+
+.brands {
+  margin-bottom: 24px;
+}
+
+.brand-card {
+  background-color: $color-white;
+  border-radius: 6px;
+  border: 1px solid $color-border;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.brand-card__logo {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  img {
+    max-height: 40px;
+    object-fit: contain;
+  }
+}
+// Единый класс стрелки
+.arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid $color-order;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  flex-shrink: 0;
+
+  svg {
+    transition: transform 0.25s ease;
+  }
+}
+
+.brand-card:hover .brand-card__arrow svg {
+  transform: translateX(4px);
+}
+
+.brands__grid {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 24px;
+    padding: 24px 0;
+  }
+
+  @media (min-width: 1365px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.brands__grid .brand-card--hidden-tablet {
+  @media (min-width: 768px) and (max-width: 1365px) {
+    display: none;
+  }
+}
+
+.brands__grid .brand-card--hidden-row {
+  display: none;
+}
+
+.brands__grid.show-all .brand-card--hidden-tablet,
+.brands__grid.show-all .brand-card--hidden-row {
+  display: flex;
+}
+
+// Планшет: показываем только первые 6 карточек
+.brands__grid .brand-card:nth-child(n + 7):not(.brand-card--hidden-tablet) {
+  @media (min-width: 768px) and (max-width: 1365px) {
+    display: none;
+  }
+}
+
+.brands__grid.show-all
+  .brand-card:nth-child(n + 7):not(.brand-card--hidden-tablet) {
+  @media (min-width: 768px) and (max-width: 1365px) {
+    display: flex;
+  }
+}
+
+// Десктоп: показываем только первые 8 карточек
+.brands__grid .brand-card:nth-child(n + 9):not(.brand-card--hidden-row) {
+  @media (min-width: 1366px) {
+    display: none;
+  }
+}
+
+.brands__grid.show-all
+  .brand-card:nth-child(n + 9):not(.brand-card--hidden-row) {
+  @media (min-width: 1366px) {
+    display: flex;
+  }
+}
+
+// ViewSonic позиционируем на десктопе
+.brands__grid .brand-card:nth-child(7) {
+  @media (min-width: 1365px) {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}
+
+// Sony позиционируем на десктопе
+.brands__grid .brand-card:nth-child(8) {
+  @media (min-width: 1365px) {
+    grid-column: 4;
+    grid-row: 2;
+  }
+}
