@@ -248,10 +248,12 @@ const sidebarClose = document.querySelector('.sidebar .header__menu')
 const openSidebar = () => {
   sidebar.classList.add('is-open')
   sidebarOverlay.classList.add('is-visible')
+  document.body.classList.add('no-scroll')
 }
 const closeSidebar = () => {
   sidebar.classList.remove('is-open')
   sidebarOverlay.classList.remove('is-visible')
+  document.body.classList.remove('no-scroll')
 }
 
 burger?.addEventListener('click', openSidebar)

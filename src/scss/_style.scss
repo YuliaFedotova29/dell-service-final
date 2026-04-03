@@ -1,5 +1,11 @@
 @use 'variables' as *;
 
+@media (min-width: 768px) and (max-width: 1365px) {
+  body.no-scroll {
+    overflow: hidden;
+  }
+}
+
 .main {
   padding: 16px 16px 24px;
 
